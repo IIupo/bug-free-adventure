@@ -1,4 +1,5 @@
 html {
+    --grid: repeat(2, minmax(0, 370px));
     box-sizing: border-box;
     height: 100%; }
 
@@ -22,7 +23,7 @@ html {
     .important {
         color: rgb(107, 90, 249);
     }
-    button:hover {
+    .profit__btn:hover {
         background-color: rgb(152, 141, 249);
         border: 3px solid rgb(107, 90, 249);
     }
@@ -77,6 +78,10 @@ html {
     background-color: rgb(181, 182, 188) !important;
 }
 
+.profit-card-item_hidden {
+    display: none;
+}
+
 .swiper-card {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
     width: 80%;
@@ -93,45 +98,54 @@ html {
      flex-direction: column;
         align-content: space-around;
         align-items: center;
+        margin: 0 20px;
 
     }
     .profit-card {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: var(--grid);
         column-gap: 40px;
         row-gap: 20px;
-        justify-content: center;
     }
+    
     .profit-card-item {
         margin: 0;
-        flex-basis: auto;
-        max-width: 370px;
+        max-width: 100%;
+        width: 100%;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
-    width: 80%;
     padding: 15px;
     border-radius: 10px;
     }
 
-    .profit-card-item:nth-child(3),
-    .profit-card-item:nth-child(4),
-    .profit-card-item:nth-child(5),
-    .profit-card-item:nth-child(6) {
-        display: none;
-    }
+    
     .see-more {
-        font-size: 20px;
         color: rgb(107, 90, 249);
-        width: auto;
-        left: 50%;
-        bottom: -37%;
         font-weight: 900;
-        padding: 0 auto;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        background: none;
+        transition: transform 0.3s;
+        justify-content: center;
+        cursor: pointer;
+        margin-top: 28px;
+    }
+
+    .see-more_open {
+        transform: rotate(180deg);
     }
 }
 @media (min-width: 1280px) {
     .profit-card-item:nth-child(3) {
         display: block;
+    }
+    .profit-card {
+        --grid: repeat(3, minmax(0, 370px));
     }
     .profit__conteiner {
         gap: 20px;

@@ -1,6 +1,16 @@
 let swiper = null;
 
-function sliderStart() {
+const getDimension = () => {
+  if (window.innerWidth < 768) {
+    return 'mobile';
+  }
+  if (window.innerWidth < 1280) {
+    return 'tablet';
+  }
+  return 'desktop';
+}
+
+function initSlider() {
   if (!swiper) {
     swiper = new Swiper(".swiper", {
       pagination: {
@@ -9,32 +19,47 @@ function sliderStart() {
         sliderCardPerView: "auto",
       },
     });
-  } else {
-    swiper.disable();
-    swiper = null;
   }
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    sliderStart();
-  } else {
-    swiper.disable();
+const seeMore = document.querySelector(".see-more");
+const sliderCard = document.querySelectorAll(".profit-card-item");
+let visabilityFlag = false;
+
+const toggleVisability = (initial) => {
+  const startIndex = getDimension() !== 'desktop' ? 2 : 3;
+
+  if(!initial) {
+    seeMore.classList[!visabilityFlag ? 'add' : 'remove']("see-more_open")
+
+    visabilityFlag = !visabilityFlag;
+  }
+
+  sliderCard.forEach((el, i) => {
+    if (i  >= startIndex) {
+      el.classList[!visabilityFlag ? 'add' : 'remove']("profit-card-item_hidden");
+    }
+  })  
+
+}
+
+window.addEventListener('resize', () => {
+  if (getDimension() !== 'mobile') {
+    if (swiper) {
+      swiper.disable();
+    }
     swiper = null;
+  } else if (!swiper) {
+    initSlider();
+  }
+})
+
+window.addEventListener("DOMContentLoaded", function () {
+  toggleVisability(true)
+
+  if (getDimension() === 'mobile') {
+    initSlider();
   }
 });
 
-let seeMore = document.querySelector(".see-more");
-let sliderCard = document.querySelectorAll(".profit-card-item");
-
-seeMore.addEventListener("click", function () {
-  if (window.matchMedia("(max-width: 1280px)").matches) {
-    for (let i = 2; i < sliderCard.length; i++) {
-      sliderCard[i].classList.toggle("display--block", true);
-    }
-  } else {
-    for (let i = 3; i < sliderCard.length; i++) {
-      sliderCard[i].classList.toggle("display--block", true);
-    }
-  }
-});
+seeMore.addEventListener("click", () => toggleVisability());
