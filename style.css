@@ -1,0 +1,151 @@
+html {
+    box-sizing: border-box;
+    height: 100%; }
+
+    *,*::after, *::before {
+        box-sizing: inherit;
+    }
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        color:  rgb(42, 35, 103);
+        width: 100vw;
+    }
+
+            section {
+                max-width:1280px;
+                margin: 0 auto;
+            }
+
+
+    .important {
+        color: rgb(107, 90, 249);
+    }
+    button:hover {
+        background-color: rgb(152, 141, 249);
+        border: 3px solid rgb(107, 90, 249);
+    }
+.profit__conteiner {
+    display: none;
+}
+.profit__title {
+   font-size: 14px;
+   color: rgb(42, 35, 103);
+   text-shadow:none;
+   position: relative;
+   font-weight: 700;
+
+}
+.profit__description {
+   font-weight: 400;
+   font-size: 12px;
+   color: rgb(42, 35, 103);
+   text-shadow:none;
+   display: inline-block;
+}
+
+.profit__title::after {
+    display: block;
+    content: "";
+    background-color: rgb(227, 117, 117);
+    height: 2px;
+    width: 175px;
+    position: absolute;
+}
+
+.profit__point {
+    font-size: 64px;
+   font-weight: 700;
+   color: rgb(255, 255, 255);
+   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+   margin: 20px 0 0 0;
+}
+.swiper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+}
+
+.swiper-pagination {
+    position: static !important;
+}
+.swiper-pagination-bullet {
+    background-color: rgb(221, 221, 221) !important;
+}
+.swiper-pagination-bullet-active {
+    background-color: rgb(181, 182, 188) !important;
+}
+
+.swiper-card {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+    width: 80%;
+    margin: 25px auto;
+    padding: 15px;
+    border-radius: 10px;
+}
+@media (min-width: 768px) {
+    .swiper {
+        display: none !important;
+    }
+    .profit__conteiner {
+     display: flex;
+     flex-direction: column;
+        align-content: space-around;
+        align-items: center;
+
+    }
+    .profit-card {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 40px;
+        row-gap: 20px;
+        justify-content: center;
+    }
+    .profit-card-item {
+        margin: 0;
+        flex-basis: auto;
+        max-width: 370px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+    width: 80%;
+    padding: 15px;
+    border-radius: 10px;
+    }
+
+    .profit-card-item:nth-child(3),
+    .profit-card-item:nth-child(4),
+    .profit-card-item:nth-child(5),
+    .profit-card-item:nth-child(6) {
+        display: none;
+    }
+    .see-more {
+        font-size: 20px;
+        color: rgb(107, 90, 249);
+        width: auto;
+        left: 50%;
+        bottom: -37%;
+        font-weight: 900;
+        padding: 0 auto;
+    }
+}
+@media (min-width: 1280px) {
+    .profit-card-item:nth-child(3) {
+        display: block;
+    }
+    .profit__conteiner {
+        gap: 20px;
+    }
+}
+
+.profit__btn {
+    display: block;
+        background-color: rgb(107, 90, 249);
+        width: 275px;
+        height: 60px;
+        color: aliceblue;
+        border: 0px;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-top: 50px;
+}
