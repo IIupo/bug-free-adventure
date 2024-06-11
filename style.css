@@ -164,13 +164,6 @@ html {
         margin-top: 50px;
 }
 
-section {
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
-    flex-wrap: wrap;
-}
-
 .section_header {
     font-weight: 800;
     margin: 20px 20px;
